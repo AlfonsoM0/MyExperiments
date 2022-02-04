@@ -140,3 +140,4 @@ console.log(h);
 // angela: 1 habla mas bajo que el resto.
 // celia: 3
 // rosa: 2
+
