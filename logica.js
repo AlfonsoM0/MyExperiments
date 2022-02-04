@@ -46,7 +46,7 @@ console.log(p);
 
 
 
-// // Seis amigos desean pasar sus vacaciones juntos y deciden, cada dos, utilizar diferentes medios de transporte;
+// Seis amigos desean pasar sus vacaciones juntos y deciden, cada dos, utilizar diferentes medios de transporte;
 // sabemos que Alejandro no utiliza el coche ya que éste acompada a Benito que no va en avién. Andrés viaja en
 // avión. Si Carlos no va acompaiado de Dario ni hace uso del avión, podria Vd. decirnos en qué medio de transporte
 // llega a su destino Tomás?
