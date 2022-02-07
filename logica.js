@@ -176,11 +176,63 @@ Bonus:
 
 let words = ["kellogg", "go", "hola", "lego", "hug", "kocomo", "hello"];
 let letters = ["a", "h", "l", "e", "l", "o", "g", "k"];
+// expect "hello".
+
+function map (wordOrArray) {
+  let obj = {};
+  
+  for (let i = 0; i < wordOrArray.length; i++) {
+
+    if (obj[wordOrArray[i]]) {
+      
+      obj[wordOrArray[i]]++;
+
+    } else {
+      obj[wordOrArray[i]] = 1;
+    }
+  }
+  return obj;
+}
+console.log("Mapa de letras");
+console.log(map(letters));
+console.log("mapa de hello");
+console.log(map(words[6]));
+
+
+function have (word, letters) {
+  let wordMap = map(word);
+  let lettersMap = map(letters);
+  
+  for (const key in wordMap) {
+    if (wordMap[key] === lettersMap[key]) {
+
+    } else { 
+      return false
+    }
+  }
+  return true;
+}
+console.log("HAVE hello?");
+console.log(have("hello", letters));
+
 
 function wordsAndLetters(words, letters) {
+  let selectedWords = [];
+
+  words.forEach(word => {
+
+    if (have(word, letters)) {
+
+      selectedWords.push(word);
+
+    }
+  });
   
-  
+  selectedWords.sort((a,b) => b.length - a.length);
+  return selectedWords[0].length;
 }
+console.log("RESULTADO");
+console.log(wordsAndLetters(words, letters) + " => hello");
 
 
 
