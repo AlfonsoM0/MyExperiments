@@ -56,7 +56,7 @@ function rdS (n=2, s) {
     return d6 + " = " + sumaD6 + " natural | no aplica dS | TOTAL =  " + sumaD6 + " es Crítico!";
   } else if (sumaD6 === d6.length) {
     return d6 + " = " + sumaD6 + " natural | no aplica dS | TOTAL = " + sumaD6 + " es Pifia!";
-  } else if (suerte() === true) {
+  } else if (suerte()) {
       return d6 + " es " + sumaD6 + " natural | " + "+dS " + dS + " | TOTAL = " + sumaRoll1;
   } else {
       return d6 + " es " + sumaD6 + " natural | " + "-dS " + dS + " | TOTAL = " + sumaRoll0;

@@ -141,6 +141,10 @@ console.log(h);
 // celia: 3
 // rosa: 2
 
+
+
+
+
 /* 
 Words and letters
 Given a 'bag' of words and a 'bag' of letters, write a
@@ -174,17 +178,56 @@ let words = ["kellogg", "go", "hola", "lego", "hug", "kocomo", "hello"];
 let letters = ["a", "h", "l", "e", "l", "o", "g", "k"];
 
 function wordsAndLetters(words, letters) {
-  words = words.sort((a, b) => b.length - a.length);
   
-  for (let w = 0; w < words.length; w++) {
-    for (let l = 0; l < words[w].length; l++) {
-      
-      
-    }
-    
-  }
   
 }
 
-wordsAndLetters(words, letters);
 
+
+
+
+// Entrevista de Google
+// El desafío:
+
+// Escribe una función que tome un string (stringSequence) y un arreglo de strings (dictionary).
+
+// La función debe devolver el string más largo en dictionary que sea una subsecuencia de stringSequence.
+
+// Por ejemplo:
+
+// let stringSequence = 'abppplee';
+// let dictionary = ['able', 'ale', 'apple', 'bale', 'kangaroo'];
+// La salida correcta sería 'apple', ya que es la subsecuencia más larga de 'abppplee'.
+
+let stringSequence = 'abppplee';
+let dictionary = ['able', 'ale', 'apple', 'bale', 'kangaroo'];
+
+
+function wordSubsecuence (wordSec, word) {
+  for (let i = 0; i < word.length; i++) {
+    if (
+      wordSec.includes(word[i]) &&
+      wordSec.indexOf(word[i]) >= wordSec.indexOf(word[i-1])
+    ) {
+    } else {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(`bale is ${wordSubsecuence(stringSequence, "bale")}`);
+
+
+function largestSubsecuence(str, arr) {
+  let newArr = [];
+  
+  arr.forEach(word => {
+    if (wordSubsecuence(str, word)) {
+      newArr.push(word);
+    }
+  }); 
+  
+  newArr.sort((a, b) => b.length - a.length);
+  return newArr[0];
+}  
+console.log(`the answer is ${largestSubsecuence(stringSequence, dictionary)}`);
