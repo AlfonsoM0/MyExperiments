@@ -178,6 +178,41 @@ let words = ["kellogg", "go", "hola", "lego", "hug", "kocomo", "hello"];
 let letters = ["a", "h", "l", "e", "l", "o", "g", "k"];
 // expect "hello".
 
+function wordsAndLetters(words, letters) {
+  let selectedWords = [];
+
+  for (const word of words) {
+    let xWord = word.split("");
+    let lettersBag = [...letters];
+
+    for (const letter of word) {
+      
+      if (lettersBag.includes(letter)) {
+        
+        xWord.splice(xWord.indexOf(letter), 1);
+        lettersBag.splice(lettersBag.indexOf(letter), 1)
+
+      }
+
+    }
+
+    if (xWord.length === 0) {
+      
+      selectedWords.push(word);
+
+    }
+
+  }
+
+  selectedWords.sort((a, b) => b.length - a.length);
+  return selectedWords[0].length;
+
+}
+console.log(wordsAndLetters(words, letters));
+
+
+// !  Words And Letters (plan B)
+/* 
 function map (wordOrArray) {
   let obj = {};
   
@@ -233,7 +268,7 @@ function wordsAndLetters(words, letters) {
 }
 console.log("RESULTADO");
 console.log(wordsAndLetters(words, letters) + " => hello");
-
+*/
 
 
 
@@ -254,23 +289,24 @@ console.log(wordsAndLetters(words, letters) + " => hello");
 let stringSequence = 'abppplee';
 let dictionary = ['able', 'ale', 'apple', 'bale', 'kangaroo'];
 
-
-function wordSubsecuence (wordSec, word) {
-  for (let i = 0; i < word.length; i++) {
-    if (
-      wordSec.includes(word[i]) &&
-      wordSec.indexOf(word[i]) >= wordSec.indexOf(word[i-1])
-    ) {
-    } else {
-      return false;
-    }
-  }
-  return true;
-}
-console.log(`bale is ${wordSubsecuence(stringSequence, "bale")}`);
-
-
 function largestSubsecuence(str, arr) {
+  
+  function wordSubsecuence (wordSec, word) {
+    for (let i = 0; i < word.length; i++) {
+      if (
+        wordSec.includes(word[i]) &&
+        wordSec.indexOf(word[i]) >= wordSec.indexOf(word[i-1])
+      ) {
+      } else {
+        return false;
+      }
+    }
+    return true;
+  }
+  console.log(`bale is ${wordSubsecuence(stringSequence, "bale")}`);
+
+  
+
   let newArr = [];
   
   arr.forEach(word => {
