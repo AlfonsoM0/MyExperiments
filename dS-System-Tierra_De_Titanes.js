@@ -18,8 +18,6 @@ function rdS (n=2, s) {
     return Math.floor(Math.random() * 6 + 1)
   };
 
-  var suerte = function() {if (s >= 0) {return true} else {return false}};
-
   var d6 = [];
   for (let i = 0; i < n; i++) {
     d6.push(r1d6());
@@ -53,13 +51,15 @@ function rdS (n=2, s) {
   };
 
   if (sumaD6 === d6.length * 6) {
-    return d6 + " = " + sumaD6 + " natural | no aplica dS | TOTAL =  " + sumaD6 + " es Crítico!";
+      return `${d6} = ${sumaD6} natural | no aplica dS | TOTAL = ${sumaD6} es Crítico!`;
   } else if (sumaD6 === d6.length) {
-    return d6 + " = " + sumaD6 + " natural | no aplica dS | TOTAL = " + sumaD6 + " es Pifia!";
-  } else if (suerte()) {
-      return d6 + " es " + sumaD6 + " natural | " + "+dS " + dS + " | TOTAL = " + sumaRoll1;
+      return `${d6} = ${sumaD6} natural | no aplica dS | TOTAL = ${sumaD6} es Pifia!`;
+  } else if (s > 0) {
+      return `${d6} = ${sumaD6} natural | +dS ${dS} | TOTAL =  ${sumaRoll1}.`;
+  } else if (s < 0) {
+      return `${d6} = ${sumaD6} natural | -dS ${dS} | TOTAL =  ${sumaRoll0}.`;
   } else {
-      return d6 + " es " + sumaD6 + " natural | " + "-dS " + dS + " | TOTAL = " + sumaRoll0;
+      return `${d6} = ${sumaD6} natural | no aplica dS | TOTAL = ${sumaD6}.`;
   }
 }
 
