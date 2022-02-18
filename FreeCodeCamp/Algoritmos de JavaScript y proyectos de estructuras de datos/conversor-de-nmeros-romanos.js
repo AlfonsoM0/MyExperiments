@@ -12,7 +12,7 @@ function convertToRoman(num) {
         {"1": "M",
         "2": "MM",
         "3": "MMM"},
-        // Centenas.
+        // Cientos.
         {"1": "C",
         "2": "CC",
         "3": "CCC",

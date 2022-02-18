@@ -37,6 +37,7 @@ A continuación, un ejemplo del efectivo en caja en formato de arreglo:
 
 */
 
+// Se multiplican *100 los valores para evitar errores de decimales de JS.
 // ¿Cuánto dinero hay?
 function sumCid(cid) {
   let cidSum = 0;
