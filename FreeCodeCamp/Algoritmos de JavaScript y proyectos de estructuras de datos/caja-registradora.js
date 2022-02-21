@@ -33,12 +33,11 @@ A continuación, un ejemplo del efectivo en caja en formato de arreglo:
   ["TEN", 20],
   ["TWENTY", 60],
   ["ONE HUNDRED", 100]
-]
+] */
 
-*/
 
+//#region SOLUCIÓN
 // Se multiplican *100 los valores para evitar errores de decimales de JS.
-// ¿Cuánto dinero hay?
 function sumCid(cid) {
   let cidSum = 0;
   for (const value of cid) {
@@ -47,96 +46,103 @@ function sumCid(cid) {
   return cidSum/100;
 }
 
-// ¿Qué cantidad hay de cada moneda y billete?
-function unidadesMonetarias(cid) {
-  let cidUM = {};
-  cidUM[cid[0][0]] = (cid[0][1] * 100 / 1);
-  cidUM[cid[1][0]] = (cid[1][1] * 100 / 5);
-  cidUM[cid[2][0]] = (cid[2][1] * 100 / 10);
-  cidUM[cid[3][0]] = (cid[3][1] * 100 / 25);
-  cidUM[cid[4][0]] = (cid[4][1] * 100 / 100);
-  cidUM[cid[5][0]] = (cid[5][1] * 100 / 500);
-  cidUM[cid[6][0]] = (cid[6][1] * 100 / 1000);
-  cidUM[cid[7][0]] = (cid[7][1] * 100 / 2000);
-  cidUM[cid[8][0]] = (cid[8][1] * 100 / 10000);
-  return cidUM;
-}
-
-
 function checkCashRegister(price, cash, cid) {
+  for (const valor of cid) {
+    valor[1] *= 100;
+  }
+
   let vuelto = (cash - price)*100;
-  let cidUM = unidadesMonetarias(cid);
-  let objV = {};
-  let objR = {status: "", change: [],};
+  let cambio = [
+    ["ONE HUNDRED", 0],
+    ["TWENTY", 0],
+    ["TEN", 0],
+    ["FIVE", 0],
+    ["ONE", 0],
+    ["QUARTER", 0],
+    ["DIME", 0],
+    ["NICKEL", 0],
+    ["PENNY", 0],  
+  ];
   
-  while (vuelto >= 0) {
-    if (vuelto >= 10000 && cidUM["ONE HUNDRED"] >= 1) {
+  while (vuelto > 0) {
+    
+    if (vuelto >= 10000 && cid[8][1] >= 10000) {
       vuelto -= 10000;
-      --cidUM["ONE HUNDRED"];
-      if (!objV["ONE HUNDRED"]) {objV["ONE HUNDRED"] = 10000} else {objV["ONE HUNDRED"] += 10000};
+      cambio[0][1] += 10000;
+      cid[8][1] -= 10000;
 
-    } else if (vuelto >= 2000 && cidUM["TWENTY"] >= 1) {
+    } else if (vuelto >= 2000 && cid[7][1] >= 2000) {
       vuelto -= 2000;
-      --cidUM["TWENTY"];
-      if (!objV["TWENTY"]) {objV["TWENTY"] = 2000} else {objV["TWENTY"] += 2000};
+      cambio[1][1] += 2000;
+      cid[7][1] -= 2000;
 
-    } else if (vuelto >= 1000 && cidUM["TEN"] >= 1) {
+    } else if (vuelto >= 1000 && cid[6][1] >= 1000) {
       vuelto -= 1000;
-      --cidUM["TEN"];
-      if (!objV["TEN"]) {objV["TEN"] = 1000} else {objV["TEN"] += 1000};
+      cambio[2][1] += 1000;
+      cid[6][1] -= 1000;
 
-    } else if (vuelto >= 500 && cidUM["FIVE"] >= 1) {
+    } else if (vuelto >= 500 && cid[5][1] >= 500) {
       vuelto -= 500;
-      --cidUM["FIVE"];
-      if (!objV["FIVE"]) {objV["FIVE"] = 500} else {objV["FIVE"] += 500};
+      cambio[3][1] += 500;
+      cid[5][1] -= 500;
 
-    } else if (vuelto >= 100 && cidUM["ONE"] >= 1) {
+    } else if (vuelto >= 100 && cid[4][1] >= 100) {
       vuelto -= 100;
-      --cidUM["ONE"];
-      if (!objV["ONE"]) {objV["ONE"] = 100} else {objV["ONE"] += 100};
+      cambio[4][1] += 100;
+      cid[4][1] -= 100;
 
-    } else if (vuelto >= 25 && cidUM["QUARTER"] >= 1) {
+    } else if (vuelto >= 25 && cid[3][1] >= 25) {
       vuelto -= 25;
-      --cidUM["QUARTER"];
-      if (!objV["QUARTER"]) {objV["QUARTER"] = 25} else {objV["QUARTER"] += 25};
+      cambio[5][1] += 25;
+      cid[3][1] -= 25;
 
-    } else if (vuelto >= 10 && cidUM["DIME"] >= 1) {
+    } else if (vuelto >= 10 && cid[2][1] >= 10) {
       vuelto -= 10;
-      --cidUM["DIME"];
-      if (!objV["DIME"]) {objV["DIME"] = 10} else {objV["DIME"] += 10};
+      cambio[6][1] += 10;
+      cid[2][1] -= 10;
 
-    } else if (vuelto >= 5 && cidUM["NICKEL"] >= 1) {
+    } else if (vuelto >= 5 && cid[1][1] >= 5) {
       vuelto -= 5;
-      --cidUM["NICKEL"];
-      if (!objV["NICKEL"]) {objV["NICKEL"] = 5} else {objV["NICKEL"] += 5};
+      cambio[7][1] += 5;
+      cid[1][1] -= 5;
 
-    } else if (vuelto >= 1 && cidUM["PENNY"] >= 1) {
+    } else if (vuelto >= 1 && cid[0][1] >= 1) {
       vuelto -= 1;
-      --cidUM["PENNY"];
-      if (!objV["PENNY"]) {objV["PENNY"] = 1} else {objV["PENNY"] += 1};
+      cambio[8][1] += 1;
+      cid[0][1] -= 1;
 
-    } else {
-      break;
-    }
+    } else {break;}
+  }
+
+  for (const valor of cambio) {
+    valor[1] /= 100;
+  }
+
+  let resultado = {status: "", change: [],};
+
+  if (sumCid(cid) === 0 && vuelto === 0) {
+    resultado.status = "CLOSED";
+    resultado.change = cambio.reverse();
+  } else if (vuelto > 0) {
+    resultado.status = "INSUFFICIENT_FUNDS";
+    resultado.change = [];
+  } else {
+    resultado.status = "OPEN";
+    
+    let newArr = [];
+
+      for (const valor of cambio) {
+        if (valor[1] > 0) {
+          newArr.push([valor[0], valor[1]])
+        }
+      }
+    
+    resultado.change = newArr;
   }
   
-
-  if (cash - price === sumCid(cid)) {
-    objR.status = "CLOSED";
-    objR.change = cid;
-  } else if (vuelto > 0) {
-    objR.status = "INSUFFICIENT_FUNDS";
-    objR.change = [];
-  } else {
-    objR.status = "OPEN";
-    for (const key in objV) {
-      objR.change.push([key, objV[key]/100]);
-    }
-  }
-
-  return objR;
+  return resultado;
 }
-
+//#endregion
 
 // Claramente paga con tarjeta y pide el vuelto en efectivo, porque de la caja solo sale dinero.
 
