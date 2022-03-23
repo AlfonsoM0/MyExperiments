@@ -1,0 +1,162 @@
+Html Webpack Plugin:
+<pre>
+  Error: Child compilation failed:
+  Module build failed (from ./node_modules/bab  el-loader/lib/index.js):
+  SyntaxError: C:\Users\Alfonso PC\github\MyEx  periments\WepPack\src\index.html: Unexpected   token (1:0)
+  
+  > 1 |   <!DOCTYPE html  >
+      | ^    2 | <html  m lang="es"><head><script defer src="main.js"></script></head>[  0m
+    3 | <head  m>
+    4 |     <meta   charset="UTF-8"  3m>
+      at instantiate (C:\Users\Alfonso PC\gith  ub\MyExperiments\WepPack\node_modules\@babel  \parser\lib\index.js:72:32)
+      at constructor (C:\Users\Alfonso PC\gith  ub\MyExperiments\WepPack\node_modules\@babel  \parser\lib\index.js:358:12)
+      at Parser.raise (C:\Users\Alfonso PC\git  hub\MyExperiments\WepPack\node_modules\@babe  l\parser\lib\index.js:3334:19)
+      at Parser.unexpected (C:\Users\Alfonso P  C\github\MyExperiments\WepPack\node_modules\  @babel\parser\lib\index.js:3372:16)
+      at Parser.parseExprAtom (C:\Users\Alfons  o PC\github\MyExperiments\WepPack\node_modul  es\@babel\parser\lib\index.js:12972:24)
+      at Parser.parseExprSubscripts (C:\Users\  Alfonso PC\github\MyExperiments\WepPack\node  _modules\@babel\parser\lib\index.js:12539:23  )
+      at Parser.parseUpdate (C:\Users\Alfonso   PC\github\MyExperiments\WepPack\node_modules  \@babel\parser\lib\index.js:12518:21)
+      at Parser.parseMaybeUnary (C:\Users\Alfo  nso PC\github\MyExperiments\WepPack\node_mod  ules\@babel\parser\lib\index.js:12489:23)
+      at Parser.parseMaybeUnaryOrPrivate (C:\U  sers\Alfonso PC\github\MyExperiments\WepPack  \node_modules\@babel\parser\lib\index.js:122  83:61)
+      at Parser.parseExprOps (C:\Users\Alfonso   PC\github\MyExperiments\WepPack\node_module  s\@babel\parser\lib\index.js:12290:23)
+  ModuleBuildError: Module build failed (from   ./node_modules/babel-loader/lib/index.js):
+  SyntaxError: C:\Users\Alfonso PC\github\MyEx  periments\WepPack\src\index.html: Unexpected   token (1:0)
+  
+  > 1 |   <!DOCTYPE html  >
+      | ^    2 | <html  m lang="es">[  0m
+    3 | <head  m>
+    4 |     <meta   charset="UTF-8"  3m>
+      at instantiate (C:\Users\Alfonso PC\gith  ub\MyExperiments\WepPack\node_modules\@babel  \parser\lib\index.js:72:32)
+      at constructor (C:\Users\Alfonso PC\gith  ub\MyExperiments\WepPack\node_modules\@babel  \parser\lib\index.js:358:12)
+      at Parser.raise (C:\Users\Alfonso PC\git  hub\MyExperiments\WepPack\node_modules\@babe  l\parser\lib\index.js:3334:19)
+      at Parser.unexpected (C:\Users\Alfonso P  C\github\MyExperiments\WepPack\node_modules\  @babel\parser\lib\index.js:3372:16)
+      at Parser.parseExprAtom (C:\Users\Alfons  o PC\github\MyExperiments\WepPack\node_modul  es\@babel\parser\lib\index.js:12972:24)
+      at Parser.parseExprSubscripts (C:\Users\  Alfonso PC\github\MyExperiments\WepPack\node  _modules\@babel\parser\lib\index.js:12539:23  )
+      at Parser.parseUpdate (C:\Users\Alfonso   PC\github\MyExperiments\WepPack\node_modules  \@babel\parser\lib\index.js:12518:21)
+      at Parser.parseMaybeUnary (C:\Users\Alfo  nso PC\github\MyExperiments\WepPack\node_mod  ules\@babel\parser\lib\index.js:12489:23)
+      at Parser.parseMaybeUnaryOrPrivate (C:\U  sers\Alfonso PC\github\MyExperiments\WepPack  \node_modules\@babel\parser\lib\index.js:122  83:61)
+      at Parser.parseExprOps (C:\Users\Alfonso   PC\github\MyExperiments\WepPack\node_module  s\@babel\parser\lib\index.js:12290:23)
+      at processResult (C:\Users\Alfonso PC\gi  thub\MyExperiments\WepPack\node_modules\webp  ack\lib\NormalModule.js:758:19)
+      at C:\Users\Alfonso PC\github\MyExperime  nts\WepPack\node_modules\webpack\lib\NormalM  odule.js:860:5
+      at C:\Users\Alfonso PC\github\MyExperime  nts\WepPack\node_modules\loader-runner\lib\L  oaderRunner.js:399:11
+      at C:\Users\Alfonso PC\github\MyExperime  nts\WepPack\node_modules\loader-runner\lib\L  oaderRunner.js:251:18
+      at context.callback (C:\Users\Alfonso PC  \github\MyExperiments\WepPack\node_modules\l  oader-runner\lib\LoaderRunner.js:124:13)
+      at C:\Users\Alfonso PC\github\MyExperime  nts\WepPack\node_modules\babel-loader\lib\in  dex.js:59:103
+  
+  - index.js:72 instantiate
+    [WepPack]/[@babel]/parser/lib/index.js:72:    32
+  
+  - index.js:358 constructor
+    [WepPack]/[@babel]/parser/lib/index.js:358    :12
+  
+  - index.js:3334 Parser.raise
+    [WepPack]/[@babel]/parser/lib/index.js:333    4:19
+  
+  - index.js:3372 Parser.unexpected
+    [WepPack]/[@babel]/parser/lib/index.js:337    2:16
+  
+  - index.js:12972 Parser.parseExprAtom
+    [WepPack]/[@babel]/parser/lib/index.js:129    72:24
+  
+  - index.js:12539 Parser.parseExprSubscripts
+    [WepPack]/[@babel]/parser/lib/index.js:125    39:23
+  
+  - index.js:12518 Parser.parseUpdate
+    [WepPack]/[@babel]/parser/lib/index.js:125    18:21
+  
+  - index.js:12489 Parser.parseMaybeUnary
+    [WepPack]/[@babel]/parser/lib/index.js:124    89:23
+  
+  - index.js:12283 Parser.parseMaybeUnaryOrPri    vate
+    [WepPack]/[@babel]/parser/lib/index.js:122    83:61
+  
+  - index.js:12290 Parser.parseExprOps
+    [WepPack]/[@babel]/parser/lib/index.js:122    90:23
+  
+  - ModuleBuildError: Module build failed (fro    m ./node_modules/babel-loader/lib/index.js    ):
+  
+  - SyntaxError: C:\Users\Alfonso PC\github\My    Experiments\WepPack\src\index.html: Unexpe    cted token (1:0)
+  
+  - > 1 |     3m<!DOCTYPE html    [33m>
+  
+  -     | ^[    0m
+  
+  -   2 | <html[    39m lang="es">    9m
+  
+  -   3 | <head[    39m>
+  
+  -   4 |     <me    ta charset="UTF-8"    m>
+  
+  - index.js:72 instantiate
+    [WepPack]/[@babel]/parser/lib/index.js:72:    32
+  
+  - index.js:358 constructor
+    [WepPack]/[@babel]/parser/lib/index.js:358    :12
+  
+  - index.js:3334 Parser.raise
+    [WepPack]/[@babel]/parser/lib/index.js:333    4:19
+  
+  - index.js:3372 Parser.unexpected
+    [WepPack]/[@babel]/parser/lib/index.js:337    2:16
+  
+  - index.js:12972 Parser.parseExprAtom
+    [WepPack]/[@babel]/parser/lib/index.js:129    72:24
+  
+  - index.js:12539 Parser.parseExprSubscripts
+    [WepPack]/[@babel]/parser/lib/index.js:125    39:23
+  
+  - index.js:12518 Parser.parseUpdate
+    [WepPack]/[@babel]/parser/lib/index.js:125    18:21
+  
+  - index.js:12489 Parser.parseMaybeUnary
+    [WepPack]/[@babel]/parser/lib/index.js:124    89:23
+  
+  - index.js:12283 Parser.parseMaybeUnaryOrPri    vate
+    [WepPack]/[@babel]/parser/lib/index.js:122    83:61
+  
+  - index.js:12290 Parser.parseExprOps
+    [WepPack]/[@babel]/parser/lib/index.js:122    90:23
+  
+  - NormalModule.js:758 processResult
+    [WepPack]/[webpack]/lib/NormalModule.js:75    8:19
+  
+  - NormalModule.js:860 
+    [WepPack]/[webpack]/lib/NormalModule.js:86    0:5
+  
+  - LoaderRunner.js:399 
+    [WepPack]/[loader-runner]/lib/LoaderRunner    .js:399:11
+  
+  - LoaderRunner.js:251 
+    [WepPack]/[loader-runner]/lib/LoaderRunner    .js:251:18
+  
+  - LoaderRunner.js:124 context.callback
+    [WepPack]/[loader-runner]/lib/LoaderRunner    .js:124:13
+  
+  - index.js:59 
+    [WepPack]/[babel-loader]/lib/index.js:59:1    03
+  
+  - child-compiler.js:169 
+    [WepPack]/[html-webpack-plugin]/lib/child-    compiler.js:169:18
+  
+  - Compiler.js:564 
+    [WepPack]/[webpack]/lib/Compiler.js:564:11  
+  - Compiler.js:1183 
+    [WepPack]/[webpack]/lib/Compiler.js:1183:1    7
+  
+  
+  - Hook.js:18 Hook.CALL_ASYNC_DELEGATE [as _c    allAsync]
+    [WepPack]/[tapable]/lib/Hook.js:18:14
+  
+  - Compiler.js:1179 
+    [WepPack]/[webpack]/lib/Compiler.js:1179:3    3
+  
+  - Compilation.js:2786 finalCallback
+    [WepPack]/[webpack]/lib/Compilation.js:278    6:11
+  
+  - Compilation.js:3091 
+    [WepPack]/[webpack]/lib/Compilation.js:309    1:11
+  
+  
+  - Hook.js:18 Hook.CALL_ASYNC_DELEGATE [as _c    allAsync]
+    [WepPack]/[tapable]/lib/Hook.js:18:14
+  
+</pre>

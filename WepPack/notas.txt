@@ -1,0 +1,72 @@
+Jon Mircha Youtube tutorial: https://youtu.be/-bp3q-YTr4Q
+
+npm -h -> despliega todos los comandos de ayuda.
+
+* Package.json
+-> consola.
+-> $ ls -> para ver la carpeta vacía.
+-> $ npm init -> instalación guiada para crear el json.
+
+* Instalación del WepPack
+-> $ npm i -D webpack webpack-cli -> instala webpack y el cliente.
+La "-D" es para desarrollador.
+
+-> $ npm run build -> ejecuta el comando descrito en el json: 
+"build": "webpack --mode production"
+Que nos entrega la compilación de código.
+
+-> en este ejemplo, se asigna el archivo de entrada y salida para el archivo de compilación:
+"dev-foo": "webpack --mode development --entry ./foo/src/index.js --output-path foo/dist",
+Sino por defecto se asigna en: "main": "src/index.js".
+
+* BABEL: herramienta de transpilación a JS.
+-> $ npm i -D babel-loader @babel/core @babel/preset-env
+-> Crear archivo ".babelrc"
+-> Agregar a ".babelrc" el objeto con datos de lo que vamos a usar:
+{
+    "presets": ["@babel/preset-env"]
+}
+-> Crear archivo "webpack.config.js" y crear:
+module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.js$/i,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
+                },
+            }
+        ]
+    }
+}
+NOTA: el "use:" puede ponerse como objeto, arreglo o texto. Como arreglo acepta más de un loader (acomodado como objeto). Las expresiones regulares es buana práctica que terminen con $, como en "/\.js$/i".
+
+
+* JS a HTML -BUG-(no me anda esta "parte 9")
+-> $ npm i -D html-loader html-webpack-plugin
+-> en la carpeta src se crea un index.html para el origen de datos. Que luego se transpilará a dist.
+-> En webpack.config.js se agrega la regla para el html.
+,
+{
+    test: /\.html#/i,
+    use: [
+        {
+            loader: "babel-loader",
+            options: { // otras opciones para loader.
+                minimize: true,
+            }
+        }
+    ]
+}
+
+-> se manda a llamar al plugin en el archivo html-webpack-plugin, colocando arriba:
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+-> se crean los plugins como segundo objeto dentro de module.exports:
+,
+plugins: [
+    new HtmlWebpackPlugin({
+        template: "./src/index.html", // archivo origen.
+        filename: "./index.html", // archivo destino.
+    })
+]
