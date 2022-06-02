@@ -62,7 +62,7 @@ const turn = {
   duration: 1,
 };
 
-//|> VALIDATE TURN INTO OFFICE-HOURS
+///|> VALIDATE TURN INTO OFFICE-HOURS
 function validateTurnInOfficeHours(turn, officeHours) {
   const turnDay = new Date(turn.date).getUTCDay();
   const officeDay = officeHours[turnDay];
@@ -78,7 +78,9 @@ function validateTurnInOfficeHours(turn, officeHours) {
 console.log(validateTurnInOfficeHours(turn, officeHours));
 
 //|> VALIDATE TURN BETWEEN TURNS IN THE SAME DAY
-function validateTurnBetweenTurnsInADAy(turn, turns) {
+function validateTurnBetweenTurnsInADay(turn, turns) {
+  turns = turns.filter(turnX => turnX.date === turn.date);
+
   for (let i = 0; i < turns.length; i++) {
     if (
       (turn.time >= turns[i].time ||
@@ -90,14 +92,12 @@ function validateTurnBetweenTurnsInADAy(turn, turns) {
 
   return true;
 }
-console.log(validateTurnBetweenTurnsInADAy(turn, turns));
+console.log(validateTurnBetweenTurnsInADay(turn, turns));
 
 //|> VALIDATE TURN
 function validateTurn(turn, turns, officeHours) {
-  turns = turns.filter(turnX => turnX.date === turn.date);
-
   if (!validateTurnInOfficeHours(turn, officeHours)) return false;
-  if (!validateTurnBetweenTurnsInADAy(turn, officeHours)) return false;
+  if (!validateTurnBetweenTurnsInADay(turn, turns)) return false;
 
   return true;
 }
