@@ -62,7 +62,7 @@ const turn = {
   duration: 1,
 };
 
-///|> VALIDATE TURN INTO OFFICE-HOURS
+//|> VALIDATE TURN INTO OFFICE-HOURS
 function validateTurnInOfficeHours(turn, officeHours) {
   const turnDay = new Date(turn.date).getUTCDay();
   const officeDay = officeHours[turnDay];
@@ -102,3 +102,35 @@ function validateTurn(turn, turns, officeHours) {
   return true;
 }
 console.log(validateTurn(turn, turns, officeHours));
+
+/* 
+  A la clínica se le añade una duración estándar para turnos de consultas, turnStandardDuration = 0.5 hs.
+
+  Para la vista del Paciente.
+  1) Elegir un día y mostrar los turnos disponibles. Crear una funsión de turnos disponibles.
+  2) Elegir un turno y mostrar la información del mismo. Para luego con esa info crear un turno.
+  3) Si el día no tiene turnos disponibles, mostrar un mensaje.
+*/
+
+const turnStandardDuration = 0.5;
+
+function turnsAvailable(turns, officeHours, turnStandardDuration, date) {
+  const turnsAvailable = [];
+
+  for (let i = 0; i <= 24; i += 0.25) {
+    const turn = {
+      date,
+      time: i,
+      duration: turnStandardDuration,
+    };
+
+    if (validateTurn(turn, turns, officeHours)) {
+      turnsAvailable.push(turn);
+    }
+  }
+
+  return turnsAvailable;
+}
+console.table(
+  turnsAvailable(turns, officeHours, turnStandardDuration, '2022-05-30')
+);
