@@ -132,6 +132,16 @@ function turnsAvailable(turns, officeHours, turnStandardDuration, date) {
 
   return turnsAvailable;
 }
-console.table(
-  turnsAvailable(turns, officeHours, turnStandardDuration, '2022-05-30')
-);
+// console.table(
+//   turnsAvailable(turns, officeHours, turnStandardDuration, '2022-05-30')
+// );
+
+//|> DATE TO STRING
+function dateToString(date) {
+  const day = date.getUTCDate();
+  const month = date.getUTCMonth() + 1;
+  const year = date.getUTCFullYear();
+
+  return `${year}-${month}-${day}`;
+}
+// console.log(dateToString(new Date()));
