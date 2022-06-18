@@ -145,3 +145,20 @@ function dateToString(date) {
   return `${year}-${month}-${day}`;
 }
 // console.log(dateToString(new Date()));
+
+//|> Number to Hours
+function numberToHours(number) {
+  let hours = Math.floor(number);
+  let minutes = Math.round((number - hours) * 60);
+
+  if (hours < 10) hours = `0${hours}`;
+  if (minutes < 10) minutes = `0${minutes}`;
+
+  return `${hours}:${minutes}`;
+}
+
+//|> DATE-TIME TO Number
+function dateTimeToNumber(date) {
+  return parseFloat((date.getHours() + date.getMinutes() / 60).toFixed(2));
+}
+// console.log(dateTimeToNumber(new Date()));
