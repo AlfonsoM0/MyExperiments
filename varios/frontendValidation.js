@@ -26,7 +26,11 @@ function validate(data) {
 //|> Example of a form component
 
 function form() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
   const [errors, setErrors] = useState({});
 
   const handleChange = e => {
