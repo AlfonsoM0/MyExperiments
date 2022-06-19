@@ -23,50 +23,65 @@ function validate(data) {
 }
 // console.log(validate(data));
 
-/* //|> Example of a form component
+//|> Example of a form component
 
-function form () {
+function form() {
   const [data, setData] = useState({});
   const [errors, setErrors] = useState({});
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setData({
       ...data,
       [e.target.name]: e.target.value,
     });
-  }
 
-  const handleSubmit = (e) => {
+    setErrors(validate(data));
+  };
+
+  const handleSubmit = e => {
     e.preventDefault();
-    const errors = validate(data);
-    setErrors(errors);
 
-    if (Object.keys(errors).length === 0) {
-      console.log('Enviando datos');
-    }else {
-      console.log('Hay errores');
+    if (Object.keys(errors).length) {
+      alert('Hay errores');
+    } else {
+      alert('Enviando datos');
+      //dispatch(submitForm(data));
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label>Nombre</label>
-        <input type="text" name="name" value={data.name} onChange={handleChange} />
+        <input
+          type="text"
+          name="name"
+          value={data.name}
+          onChange={handleChange}
+        />
         {errors.name && <p>{errors.name}</p>}
       </div>
       <div>
         <label>Email</label>
-        <input type="email" name="email" value={data.email} onChange={handleChange} />
+        <input
+          type="email"
+          name="email"
+          value={data.email}
+          onChange={handleChange}
+        />
         {errors.email && <p>{errors.email}</p>}
       </div>
       <div>
         <label>Contraseña</label>
-        <input type="password" name="password" value={data.password} onChange={handleChange} />
+        <input
+          type="password"
+          name="password"
+          value={data.password}
+          onChange={handleChange}
+        />
         {errors.password && <p>{errors.password}</p>}
       </div>
       <button type="submit">Enviar</button>
     </form>
-  )
+  );
 }
- */
