@@ -9,7 +9,12 @@ const data = {
 };
 
 function validate(data) {
-  const errors = {};
+  const errors = {
+    name: mull,
+    email: mull,
+    password: mull,
+  };
+
   if (!data.name) {
     errors.name = 'El nombre es requerido';
   }
@@ -19,6 +24,7 @@ function validate(data) {
   if (!data.password) {
     errors.password = 'La contraseña es requerida';
   }
+
   return errors;
 }
 // console.log(validate(data));
