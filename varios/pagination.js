@@ -30,15 +30,32 @@ function pagination(elements, elementsPerPage, page) {
 
 /* //|> Example on a React component
 
-function Pagination(props) {
-  const { elements, elementsPerPage, page } = props;
-  const firstPage = pagination(elements, elementsPerPage, page);
-
+function Pagination({ elements, elementsPerPage, page }) {
   return (
     <div>
       <ul>
-        {firstPage.map(element => <li>{element.name}</li>)}
+        {pagination(elements, elementsPerPage, page).map(element => (
+          <li>{element.name}</li>
+        ))}
       </ul>
+    </div>
+  );
+} */
+
+/* //|> Example of a slect page component
+
+function SelectPage({ elements, elementsPerPage, page, onChangePage }) {
+  return (
+    <div>
+      <select onChange={onChangePage}>
+        {Array.from(
+          Array(Math.ceil(elements.length / elementsPerPage)),
+          (_, i) => i + 1
+        )
+        .map(page => (
+          <option value={page}>{page}</option>
+        ))}
+      </select>
     </div>
   );
 } */
