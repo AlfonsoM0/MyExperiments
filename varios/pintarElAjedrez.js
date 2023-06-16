@@ -68,26 +68,19 @@ function isTheFormOfTheCorrectMatrix(matrix) {
 
 // Función para verificar que una matriz correcta esté correctamente pintada, sin filas o columnas que se repitan en cantidad de celdas rojas.
 function isTheMatrixWellPainted(matrix) {
-  const numberOfRedsPerRow = matrix.map((row) =>
-    row.reduce((a, c) => a + c, 0)
-  );
-  const setOfRowValues = new Set(numberOfRedsPerRow);
-  console.log(setOfRowValues);
-
-  if (setOfRowValues.size !== matrix.length) return false;
-
-  const numberOfRedsPerColumn = [];
+  const setOfRowValues = new Set();
+  const setOfColValues = new Set();
 
   for (let i = 0; i < matrix.length; i++) {
-    const sumOfColumn = matrix.map((col) => col[i]).reduce((a, c) => a + c, 0);
+    const sumOfRow = matrix[i].reduce((a, c) => a + c, 0);
+    const sumOfColumn = matrix.map((row) => row[i]).reduce((a, c) => a + c, 0);
 
-    numberOfRedsPerColumn.push(sumOfColumn);
+    setOfRowValues.add(sumOfRow);
+    setOfColValues.add(sumOfColumn);
   }
 
-  const setOfColumnValues = new Set(numberOfRedsPerColumn);
-  console.log(setOfColumnValues);
-
-  if (setOfColumnValues.size !== matrix.length) return false;
+  if (setOfRowValues.size !== matrix.length) return false;
+  if (setOfColValues.size !== matrix.length) return false;
 
   return true;
 }
